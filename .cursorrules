@@ -1,0 +1,26 @@
+# Instagram Login Cookie Project
+
+## Project Focus
+- Direct HTTP requests to Instagram login endpoints
+- Extract and manage authentication cookies
+- No browser automation (Selenium, Playwright, etc.)
+- Python-based implementation
+
+## Code Style
+- Use `requests` library for HTTP operations
+- Implement proper session management
+- Handle CSRF tokens and form data correctly
+- Include error handling for network requests
+- Use type hints where appropriate
+
+## Key Requirements
+- Parse Instagram login forms and CSRF tokens
+- Handle redirects and cookie persistence
+- Extract session cookies for reuse
+- Avoid user-agent detection issues
+- Minimal dependencies
+
+## File Structure
+- Keep implementation focused and lightweight
+- Separate concerns: login logic, cookie management, HTTP handling
+- Include proper documentation for API usage
