@@ -38,3 +38,25 @@ class InstagramLogin:
             return result.get('authenticated', False), result, cookies
         else:
             return False, {"error": f"HTTP {response.status_code}"}, {}
+    
+    def validate_cookies(self, cookies):
+        session = requests.Session()
+        for name, value in cookies.items():
+            session.cookies.set(name, value)
+        
+        try:
+            # Test with Instagram's main page
+            response = session.get('https://www.instagram.com/')
+            if response.status_code == 200:
+                content = response.text
+                
+                # Check for essential indicators of successful login
+                return (
+                    'sessionid' in str(session.cookies) or  # Session cookie present
+                    'ds_user_id' in str(session.cookies) or  # User ID cookie present
+                    'logout' in content.lower()  # Logout button present
+                )
+            return False
+        except Exception as e:
+            print(f"Validation error: {e}")
+            return False
